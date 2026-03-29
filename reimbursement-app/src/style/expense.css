@@ -21,6 +21,18 @@
   flex-direction: column;
 }
 
+/* 🔘 Form Actions (BOTTOM RIGHT ALIGN) */
+.form-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* push button to right */
+.form-actions .save-btn {
+  margin-left: auto;
+}
 /* 🔷 Header */
 .header {
   padding: 20px 30px;
