@@ -60,10 +60,11 @@ const SubmitExpense = () => {
 
   // 💾 Save
   const handleSave = async () => {
-    const convertedAmount = await convertCurrency(
-      form.amount,
-      form.currency
-    );
+    const convertedAmount = await fetch("http://localhost:3000/api/expenses/add", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(newExpense)
+});
 
     const newExpense = {
       ...form,

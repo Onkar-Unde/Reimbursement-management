@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SubmitExpense from "../pages/Expense/SubmitExpense";
 import ExpenseHistory from "../pages/Expense/ExpenseHistory";
 import AdminDashboard from "../modules/admin/pages/AdminDashboard";
 import UserManagement from "../modules/admin/pages/UserManagement";
 import CompanySettings from "../modules/admin/pages/CompanySettings";
 import ApprovalRules from "../modules/admin/pages/ApprovalRules";
-import Login from "../Login";
-import Signup from "../Signup";
 
 import {
   FiBarChart2,
@@ -21,31 +19,28 @@ import {
 import "../style/sidebar.css";
 
 const Sidebar = () => {
-  const [user, setUser] = useState(null);
-  const [authMode, setAuthMode] = useState("login"); // login/signup
+  // Default admin user
+  const [user, setUser] = useState({ name: "Admin", role: "admin" });
 
-  const [activeSection, setActiveSection] = useState("employee");
-  const [activeTab, setActiveTab] = useState("history");
-  const [activeAdminTab, setActiveAdminTab] = useState("dashboard");
+  // Active section and tabs
+  const [activeSection, setActiveSection] = useState("admin"); // admin by default
+  const [activeTab, setActiveTab] = useState("history"); // employee tabs
+  const [activeAdminTab, setActiveAdminTab] = useState("dashboard"); // admin tab
 
-  // 🔥 Check user on load
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
-  }, []);
-
+  // Logout function
   const logout = () => {
-    localStorage.removeItem("user");
-    window.location.reload();
+    setUser(null);
+    setActiveSection("employee");
+    setActiveTab("history");
+    setActiveAdminTab("dashboard");
   };
 
+  // Get header title based on current section/tab
   const getMainTitle = () => {
-    if (!user) return "Authentication";
+    if (!user) return "RB Management";
 
     if (activeSection === "employee") {
-      return activeTab === "history"
-        ? "Expense History"
-        : "Submit Expense";
+      return activeTab === "history" ? "Expense History" : "Submit Expense";
     } else {
       switch (activeAdminTab) {
         case "dashboard":
@@ -68,31 +63,11 @@ const Sidebar = () => {
       <div className="sidebar">
         <h2 className="logo">RB Management</h2>
 
-        {/* 🔐 NOT LOGGED IN */}
-        {!user ? (
-          <div className="menu">
-            <div
-              className={`menu-item ${authMode === "login" ? "active" : ""}`}
-              onClick={() => setAuthMode("login")}
-            >
-              Login
-            </div>
-
-            <div
-              className={`menu-item ${authMode === "signup" ? "active" : ""}`}
-              onClick={() => setAuthMode("signup")}
-            >
-              Signup
-            </div>
-          </div>
-        ) : (
+        {user && (
           <>
             {/* 👤 USER INFO */}
             <div style={{ marginBottom: "20px" }}>
-              <div className="menu-item active">
-                Welcome, {user.name} 👋
-              </div>
-
+              <div className="menu-item active">Welcome, {user.name} 👋</div>
               <div className="menu-item" onClick={logout}>
                 <FiLogOut style={{ marginRight: "8px" }} />
                 Logout
@@ -102,9 +77,7 @@ const Sidebar = () => {
             {/* Section Toggle */}
             <div style={{ borderBottom: "1px solid #333", paddingBottom: "15px" }}>
               <div
-                className={`menu-item ${
-                  activeSection === "employee" ? "active" : ""
-                }`}
+                className={`menu-item ${activeSection === "employee" ? "active" : ""}`}
                 onClick={() => {
                   setActiveSection("employee");
                   setActiveTab("history");
@@ -114,9 +87,7 @@ const Sidebar = () => {
               </div>
 
               <div
-                className={`menu-item ${
-                  activeSection === "admin" ? "active" : ""
-                }`}
+                className={`menu-item ${activeSection === "admin" ? "active" : ""}`}
                 onClick={() => {
                   setActiveSection("admin");
                   setActiveAdminTab("dashboard");
@@ -130,18 +101,13 @@ const Sidebar = () => {
             {activeSection === "employee" && (
               <div className="menu">
                 <div
-                  className={`menu-item ${
-                    activeTab === "history" ? "active" : ""
-                  }`}
+                  className={`menu-item ${activeTab === "history" ? "active" : ""}`}
                   onClick={() => setActiveTab("history")}
                 >
                   <FiBarChart2 /> History
                 </div>
-
                 <div
-                  className={`menu-item ${
-                    activeTab === "form" ? "active" : ""
-                  }`}
+                  className={`menu-item ${activeTab === "form" ? "active" : ""}`}
                   onClick={() => setActiveTab("form")}
                 >
                   <FiPlus /> Submit
@@ -153,36 +119,25 @@ const Sidebar = () => {
             {activeSection === "admin" && (
               <div className="menu">
                 <div
-                  className={`menu-item ${
-                    activeAdminTab === "dashboard" ? "active" : ""
-                  }`}
+                  className={`menu-item ${activeAdminTab === "dashboard" ? "active" : ""}`}
                   onClick={() => setActiveAdminTab("dashboard")}
                 >
                   <FiBarChart2 /> Dashboard
                 </div>
-
                 <div
-                  className={`menu-item ${
-                    activeAdminTab === "users" ? "active" : ""
-                  }`}
+                  className={`menu-item ${activeAdminTab === "users" ? "active" : ""}`}
                   onClick={() => setActiveAdminTab("users")}
                 >
                   <FiUsers /> Users
                 </div>
-
                 <div
-                  className={`menu-item ${
-                    activeAdminTab === "company" ? "active" : ""
-                  }`}
+                  className={`menu-item ${activeAdminTab === "company" ? "active" : ""}`}
                   onClick={() => setActiveAdminTab("company")}
                 >
                   <FiHome /> Company
                 </div>
-
                 <div
-                  className={`menu-item ${
-                    activeAdminTab === "rules" ? "active" : ""
-                  }`}
+                  className={`menu-item ${activeAdminTab === "rules" ? "active" : ""}`}
                   onClick={() => setActiveAdminTab("rules")}
                 >
                   <FiCheck /> Rules
@@ -197,34 +152,23 @@ const Sidebar = () => {
       <div className="main-content">
         <div className="header">
           <h1 className="header-title">{getMainTitle()}</h1>
-
-          {user ? (
-            <span className="link-btn">👤 {user.name}</span>
-          ) : (
-            <span className="link-btn">Please Login</span>
-          )}
+          {user && <span className="link-btn">👤 {user.name}</span>}
         </div>
 
         <div className="content-area">
-          {!user ? (
-            authMode === "login" ? (
-              <Login switchToSignup={() => setAuthMode("signup")} />
+          {user ? (
+            activeSection === "employee" ? (
+              activeTab === "history" ? <ExpenseHistory /> : <SubmitExpense />
             ) : (
-              <Signup switchToLogin={() => setAuthMode("login")} />
-            )
-          ) : activeSection === "employee" ? (
-            activeTab === "history" ? (
-              <ExpenseHistory />
-            ) : (
-              <SubmitExpense />
+              <>
+                {activeAdminTab === "dashboard" && <AdminDashboard />}
+                {activeAdminTab === "users" && <UserManagement />}
+                {activeAdminTab === "company" && <CompanySettings />}
+                {activeAdminTab === "rules" && <ApprovalRules />}
+              </>
             )
           ) : (
-            <>
-              {activeAdminTab === "dashboard" && <AdminDashboard />}
-              {activeAdminTab === "users" && <UserManagement />}
-              {activeAdminTab === "company" && <CompanySettings />}
-              {activeAdminTab === "rules" && <ApprovalRules />}
-            </>
+            <div>Please Login</div>
           )}
         </div>
       </div>

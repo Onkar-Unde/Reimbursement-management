@@ -4,33 +4,37 @@ import "../../style/expense.css";
 const ExpenseHistory = () => {
   const [expenses, setExpenses] = useState([]);
 
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("expenses"));
+  // useEffect(() => {
+  //   const stored = JSON.parse(localStorage.getItem("expenses"));
 
-    if (!stored || stored.length === 0) {
-      const demo = [
-        {
-          id: 1,
-          description: "Lunch",
-          category: "Food",
-          amountINR: 500,
-          status: "Approved",
-        },
-        {
-          id: 2,
-          description: "Taxi",
-          category: "Travel",
-          amountINR: 300,
-          status: "Pending",
-        },
-      ];
-      localStorage.setItem("expenses", JSON.stringify(demo));
-      setExpenses(demo);
-    } else {
-      setExpenses(stored);
-    }
-  }, []);
-
+  //   if (!stored || stored.length === 0) {
+  //     const demo = [
+  //       {
+  //         id: 1,
+  //         description: "Lunch",
+  //         category: "Food",
+  //         amountINR: 500,
+  //         status: "Approved",
+  //       },
+  //       {
+  //         id: 2,
+  //         description: "Taxi",
+  //         category: "Travel",
+  //         amountINR: 300,
+  //         status: "Pending",
+  //       },
+  //     ];
+  //     localStorage.setItem("expenses", JSON.stringify(demo));
+  //     setExpenses(demo);
+  //   } else {
+  //     setExpenses(stored);
+  //   }
+  // }, []);
+useEffect(() => {
+  fetch("http://localhost:3000/api/expenses/all")
+    .then(res => res.json())
+    .then(data => setExpenses(data));
+}, []);
   return (
     <div>
       <h2 className="header-title">Expense History</h2>
