@@ -69,7 +69,7 @@ const ExpenseFormPage = () => {
           {/* Date */}
           <div style={{ marginTop: "20px" }}>
             <label className="label">Expense Date</label>
-            <input name="date" type="date" onChange={handleChange} className="input full" />
+            <input name="date" type="date" onChange={handleChange} className="input" />
           </div>
 
           {/* Description */}

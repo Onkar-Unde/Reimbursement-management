@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import EmployeeDashboard from './pages/EmployeeDashboard'
+import Sidebar from './components/sidebar'
 
 function App() {
 
 
   return (
     <>
-      <EmployeeDashboard/>
+      <Sidebar/>
     </>
   )
 }
