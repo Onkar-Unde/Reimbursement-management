@@ -32,7 +32,7 @@ const ExpenseHistory = () => {
   }, []);
 
   return (
-    <div className="card">
+    <div>
       <h2 className="header-title">Expense History</h2>
 
       <div className="table-wrapper">

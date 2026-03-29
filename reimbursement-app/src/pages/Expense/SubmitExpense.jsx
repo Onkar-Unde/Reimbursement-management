@@ -79,7 +79,7 @@ const SubmitExpense = () => {
   };
 
   return (
-    <div className="card">
+    <div>
       <h2 className="header-title">Submit Expense</h2>
 
       {/* OCR Upload */}
@@ -96,12 +96,12 @@ const SubmitExpense = () => {
       <div className="grid" style={{ marginTop: "20px" }}>
         <div>
           <label className="label">Last Name</label>
-          <input name="lastName" onChange={handleChange} className="input" />
+          <input name="lastName" onChange={handleChange} className="input" placeholder="Enter Last Name"/>
         </div>
 
         <div>
           <label className="label">First Name</label>
-          <input name="firstName" onChange={handleChange} className="input" />
+          <input name="firstName" onChange={handleChange} className="input" placeholder="Enter Name" />
         </div>
       </div>
 
@@ -114,66 +114,74 @@ const SubmitExpense = () => {
             type="number"
             onChange={handleChange}
             className="input"
+            placeholder="Enter Amount"
           />
         </div>
 
         <div>
           <label className="label">Category</label>
-          <input name="category" onChange={handleChange} className="input" />
+          <input name="category" onChange={handleChange} className="input" placeholder="Enter Catgery"/>
         </div>
       </div>
 
-      {/* Country */}
-      <div style={{ marginTop: "20px" }}>
-        <label className="label">Country (Currency)</label>
-        <select
-          className="input"
-          onChange={(e) =>
-            setForm({ ...form, currency: e.target.value })
-          }
-        >
-          <option>Select Country</option>
-          {countries.map((c, i) => {
-            const currency = c.currencies
-              ? Object.keys(c.currencies)[0]
-              : "";
-            return (
-              <option key={i} value={currency}>
-                {c.name.common} ({currency})
-              </option>
-            );
-          })}
-        </select>
-      </div>
+      {/* Country + Date */}
+<div className="grid" style={{ marginTop: "20px" }}>
+  <div>
+    <label className="label">Country (Currency)</label>
+    <select
+      className="input"
+      onChange={(e) =>
+        setForm({ ...form, currency: e.target.value })
+      }
+    >
+      <option>Select Country</option>
+      {countries.map((c, i) => {
+        const currency = c.currencies
+          ? Object.keys(c.currencies)[0]
+          : "";
+        return (
+          <option key={i} value={currency}>
+            {c.name.common} ({currency})
+          </option>
+        );
+      })}
+    </select>
+  </div>
 
-      {/* Date + Description */}
-      <div className="grid" style={{ marginTop: "20px" }}>
-        <div>
-          <label className="label">Expense Date</label>
-          <input
-            name="date"
-            type="date"
-            onChange={handleChange}
-            className="input"
-          />
-        </div>
+  <div>
+    <label className="label">Expense Date</label>
+    <input
+      name="date"
+      type="date"
+      onChange={handleChange}
+      className="input"
+    />
+  </div>
+</div>
 
-        <div>
-          <label className="label">Description</label>
-          <textarea
-            name="description"
-            onChange={handleChange}
-            className="input textarea"
-          />
-        </div>
-      </div>
+{/* Description + Button */}
+<div
+  className="grid"
+  style={{
+    marginTop: "20px",
+    alignItems: "end",
+  }}
+>
+  <div>
+    <label className="label">Description</label>
+    <textarea
+      name="description"
+      onChange={handleChange}
+      className="input textarea"
+    />
+  </div>
 
-      {/* Save Button */}
-      <div className="form-actions">
-        <button onClick={handleSave} className="save-btn">
-          Save
-        </button>
-      </div>
+  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+    <button onClick={handleSave} className="save-btn">
+      Save
+    </button>
+  </div>
+</div>
     </div>
   );
 };
