@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import './style/auth.css';
 function Login({ switchToSignup }) {
   const [form, setForm] = useState({
     email: "",
@@ -26,43 +26,27 @@ function Login({ switchToSignup }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-500 to-blue-600">
-      <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md relative animate-fade-in">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Welcome Back! 👋
-        </h2>
+    <div className="auth-bg login-bg">
+  <div className="auth-card">
+    <h2 className="auth-title">Welcome Back! 👋</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400 transition duration-200"
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400 transition duration-200"
-          />
+    <form onSubmit={handleSubmit} className="auth-form">
+      <input name="email" placeholder="Email" onChange={handleChange} className="auth-input" />
+      <input name="password" type="password" placeholder="Password" onChange={handleChange} className="auth-input" />
 
-          <button
-            type="submit"
-            className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transform hover:scale-105 transition duration-200"
-          >
-            Login
-          </button>
-        </form>
+      <button type="submit" className="auth-btn login-btn">
+        Login
+      </button>
+    </form>
 
-        <p className="text-center text-sm mt-4 text-gray-600">
-          Don't have an account?{" "}
-          <span onClick={switchToSignup} className="text-green-500 cursor-pointer hover:underline">
-            Sign up
-          </span>
-        </p>
-      </div>
-    </div>
+    <p className="auth-footer">
+      Don't have an account?{" "}
+      <span onClick={switchToSignup} className="auth-link">
+        Sign up
+      </span>
+    </p>
+  </div>
+</div>
   );
 }
 
