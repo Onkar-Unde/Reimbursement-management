@@ -1,0 +1,653 @@
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ADMIN MODULE STYLES */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 📊 Admin Dashboard */
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #222, #1a1a1a);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 👥 User Management */
+.users-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-card {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.user-card:hover {
+  background: #111;
+  border-color: #444;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.user-details {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.user-role-badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.user-role-badge.admin {
+  background: #8b5cf6;
+}
+
+.user-role-badge.manager {
+  background: #3b82f6;
+}
+
+.user-role-badge.employee {
+  background: #10b981;
+}
+
+.user-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #aaa;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.icon-btn:hover {
+  background: #222;
+  color: white;
+  border-color: #444;
+}
+
+/* 📋 User Form */
+.user-form {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-row.full {
+  grid-column: span 2;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-input,
+.form-select {
+  padding: 10px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #0a0a0a;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: white;
+  background: #111;
+}
+
+.form-input::placeholder {
+  color: #666;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+/* 🔧 Approval Rules */
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rule-card {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  transition: 0.2s;
+}
+
+.rule-card:hover {
+  background: #111;
+  border-color: #444;
+}
+
+.rule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.rule-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.rule-description {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.rule-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.rule-detail-item {
+  background: #111;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+}
+
+.rule-detail-label {
+  color: #888;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.rule-detail-value {
+  color: white;
+  font-weight: 500;
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-status.active {
+  background: #10b981;
+  color: white;
+}
+
+.badge-status.inactive {
+  background: #6b7280;
+  color: white;
+}
+
+/* 📝 Rule Form */
+.rule-form {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.approval-sequence {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 6px;
+}
+
+.sequence-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 12px;
+}
+
+.sequence-step:not(:last-child) {
+  border-bottom: 1px solid #333;
+}
+
+.step-number {
+  background: #3b82f6;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.step-arrow {
+  color: #3b82f6;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+/* 💰 Company Settings */
+.settings-form {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.setting-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.setting-label {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 500;
+}
+
+.setting-value {
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* 💳 Expenses Management */
+.expenses-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expenses-table thead {
+  background: #111;
+  border-bottom: 2px solid #333;
+}
+
+.expenses-table th {
+  padding: 12px;
+  text-align: left;
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.expenses-table td {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+  font-size: 13px;
+}
+
+.expenses-table tbody tr:hover {
+  background: #0a0a0a;
+}
+
+.expense-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.expense-status.pending {
+  background: #f59e0b;
+  color: #1a1a1a;
+}
+
+.expense-status.approved {
+  background: #10b981;
+  color: white;
+}
+
+.expense-status.rejected {
+  background: #ef4444;
+  color: white;
+}
+
+/* 🔘 Buttons */
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+  outline: none;
+}
+
+.btn-primary {
+  background: white;
+  color: black;
+}
+
+.btn-primary:hover {
+  background: #f0f0f0;
+}
+
+.btn-primary:disabled {
+  background: #666;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #333;
+  color: white;
+  border: 1px solid #444;
+}
+
+.btn-secondary:hover {
+  background: #444;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.btn-success {
+  background: #10b981;
+  color: white;
+}
+
+.btn-success:hover {
+  background: #059669;
+}
+
+.btn-small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* 📣 Actions */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+}
+
+/* 🔍 Filter/Search */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #0a0a0a;
+  color: white;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #666;
+}
+
+.filter-select {
+  padding: 10px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #0a0a0a;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 📧 Modal / Confirmation */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-overlay.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.modal-message {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* 📊 Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.empty-state-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.empty-state-message {
+  font-size: 13px;
+  color: #888;
+}
+
+/* 🔀 Tabs */
+.admin-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+}
+
+.admin-tab {
+  padding: 12px 0;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: #888;
+  transition: 0.2s;
+}
+
+.admin-tab:hover {
+  color: white;
+}
+
+.admin-tab.active {
+  color: white;
+  border-color: white;
+}
+
+/* 🎯 Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row.full {
+    grid-column: span 1;
+  }
+
+  .rule-details {
+    grid-template-columns: 1fr;
+  }
+
+  .user-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-actions {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .admin-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .expenses-table {
+    font-size: 12px;
+  }
+
+  .expenses-table th,
+  .expenses-table td {
+    padding: 8px;
+  }
+}
